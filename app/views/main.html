@@ -1,0 +1,57 @@
+<!doctype html>
+
+<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
+<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
+<head>
+<meta charset="utf-8">
+<meta name="description"
+	content="Ein Service der es ihnen ermöglicht Bücher, CDs und vieles mehr einzuscannen und anschließend zu verkaufen">
+<meta name="author" content="Simon Grätzer">
+<!-- Place favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+<link rel="shortcut icon" href="@{'/public/favicon.ico'}">
+<link rel="apple-touch-icon" href="@{'/public/apple-touch-icon.png'}">
+#{stylesheet 'main.css' /}
+#{get 'moreStyles' /}
+
+<!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
+#{script 'jquery-1.6.min.js' /}
+*{#{script 'script.js' /}}*
+#{get 'moreScripts' /}
+
+</head>
+<body>
+	<div id="main">
+		<header>Banking@Home</header>
+
+		<nav>
+			<ul>
+				#{if user}
+				<li>#{a @Accounts.index() }&{'Accounts'}#{/a}</li>
+				<li>#{a @Rules.index() }&{'Rules'}#{/a}</li>
+				<li>#{a @Categories.index() }&{'Categories'}#{/a}</li>
+                <li>#{a @Importer.index() }&{'Import'}#{/a}</li>
+                
+				#{if user?.name == "admin"}
+				<li>#{a @Users.index() }&{'Users'}#{/a}</li>
+				#{/if}
+				#{/if}
+				#{else}
+				<li>#{a @Application.index()}Home#{/a}
+				#{/else}
+			</ul>
+		</nav>
+
+		<div id="content">#{doLayout /}</div>
+
+		<footer>
+			Copyright 2011 <a href="http://formalcode.com">Simon Grätzer</a>
+		</footer>
+	</div>
+	<!--! end of #container -->
+</body>
+</html>

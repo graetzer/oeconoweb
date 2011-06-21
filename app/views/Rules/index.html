@@ -1,0 +1,74 @@
+#{extends 'main.html' /}
+
+<h2>Rules</h2>
+
+<table class="entity Rule">
+	<thead>
+		<tr>
+			<th><!-- actions --></th>
+			
+	        
+				<th>Words</th>
+	        
+			
+	        
+				<th>Weight</th>
+	        
+			
+	        
+				<th>Name</th>
+	        
+			
+	        
+				<th>Category</th>
+	        
+			
+	        
+				<th>User</th>
+	        
+			
+	        
+				<th>Id</th>
+	        
+			
+		</tr>
+	</thead>
+	<tbody>
+	#{list items:entities, as:'entity'}
+		<tr>
+			<td>
+				<a href="@{Rules.show(entity.id)}">Show</a>&nbsp;
+				<a href="@{Rules.edit(entity.id)}">Edit</a>&nbsp;
+				<a href="@{Rules.delete(entity.id)}" onclick="if (!confirm('Are you sure you want to delete this record?')) return false;">Delete</a>
+			</td>
+			
+        
+					<td>${entity.words}</td>
+        
+			
+        
+					<td>${entity.weight}</td>
+        
+			
+        
+					<td>${entity.name}</td>
+        
+			
+        
+					<td>${entity.category}</td>
+        
+			
+        
+					<td>${entity.user}</td>
+        
+			
+        
+					<td>${entity.id}</td>
+        
+			
+		</tr>
+	#{/list}
+	</tbody>
+</table>
+
+<a href="@{Rules.create}">Create</a>

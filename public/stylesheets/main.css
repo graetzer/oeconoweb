@@ -1,0 +1,192 @@
+@import url("./reset.css");
+
+/* Primary Styles
+    Author: simon@graetzer.org
+ */
+html,body {
+    background: #009933;
+    height: 100%;
+    position: relative;
+}
+
+#main {
+    background: white;
+    width: auto;
+    margin: 20px;
+    padding: 2em;
+    height: 100%;
+    position: relative;
+}
+
+header {
+    font-size: xx-large;
+    font-family: serif;
+    font-weight: bolder;
+    postion: absolute;
+    margin-bottom: 10px;
+}
+
+#main nav {
+    float: left;
+    list-style-type: none;
+    overflow: hidden;
+    padding: 10px;
+    width: 15%;
+    heigth: 100%;
+}
+
+nav ul li {
+    background: white;
+    float: left; /* LTR */
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+nav a,nav strong,nav span {
+    display: block;
+    padding: 3px 0px 3px 10%;
+    text-decoration: none;
+    border-bottom: 1px #ddd solid;
+}
+
+nav li a:focus,nav li a:hover,nav li a:active {
+    background-color: #24D600;
+    color: #fff;
+    outline: 0 none;
+}
+
+#main #content {
+    float: left;
+    width: 75%;
+    margin: 10px 20px;
+    position: relative;
+}
+
+footer {
+    position: absolute;
+    clear: both;
+    bottom: 0;
+    width: 99%;
+    padding: 10px;
+}
+
+#content h1 {
+    font-size: 36px;
+    border-bottom: solid #ddd 1px;
+    margin-bottom: 10px;
+}
+
+.tablecontainer {position: relative;}
+.dataTables_wrapper{top:40px;}
+
+.tablecontainer #addButton a{
+    margin: 0; position : absolute;
+    top: 0;
+    right: 0;
+    background: #54BD06;
+    padding: 3px 10px;
+    font-size: 90%;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
+    color: #fff !important;
+    text-decoration: none;
+    position: absolute;
+}
+
+#content form .inputField {
+    margin: 10px 0;
+    height: 60px;
+    padding: 5px;
+    border-bottom: 1px #ddd solid;
+    position: relative;
+}
+
+form .inputField * {
+    position: relative;
+    left: 200px;
+    top: 15px;
+    width: 300px;
+ }
+ 
+ form .inputField textarea * {
+    position: static;
+ }
+
+form .inputField .description{
+    font-size: 15px;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+table.display {
+    background-color: #EBEBEB;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+/*
+ * Media queries for responsive design
+ * These follow after primary styles so they will successfully override. 
+ */
+@media all and (orientation:portrait) {
+    /* Style adjustments for portrait mode goes here */
+}
+
+@media all and (orientation:landscape) {
+    /* Style adjustments for landscape mode goes here */
+}
+
+/* Grade-A Mobile Browsers (Opera Mobile, iPhone Safari, Android Chrome)  
+   Consider this: www.cloudfour.com/css-media-query-for-mobile-is-fools-gold/ */
+@media screen and (max-device-width: 480px) {
+    /* Uncomment if you don't want iOS and WinMobile to mobile-optimize the text for you
+     j.mp/textsizeadjust 
+  html { -webkit-text-size-adjust:none; -ms-text-size-adjust:none; } */
+}
+
+/* 
+ * print styles
+ * inlined to avoid required HTTP connection www.phpied.com/delay-loading-your-print-css/ 
+ */
+@media print {
+    * {
+        background: transparent !important;
+        color: #444 !important;
+        text-shadow: none !important;
+    }
+    a,a:visited {
+        color: #444 !important;
+        text-decoration: underline;
+    }
+    a:after {
+        content: " (" attr(href) ")";
+    }
+    abbr:after {
+        content: " (" attr(title) ")";
+    }
+    .ir a:after {
+        content: "";
+    } /* Don't show links for images */
+    pre,blockquote {
+        border: 1px solid #999;
+        page-break-inside: avoid;
+    }
+    thead {
+        display: table-header-group;
+    } /* css-discuss.incutio.com/wiki/Printing_Tables */
+    tr,img {
+        page-break-inside: avoid;
+    }
+    @page {
+        margin: 0.5cm;
+    }
+    p,h2,h3 {
+        orphans: 3;
+        widows: 3;
+    }
+    h2,h3 {
+        page-break-after: avoid;
+    }
+}

@@ -1,0 +1,6 @@
+# Application dependencies
+
+require:
+    - play
+    - play -> scaffold head
+    - play -> secure

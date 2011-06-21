@@ -1,0 +1,198 @@
+#{set 'moreScripts'}
+#{script 'jquery-ui-1.8.2.custom.min.js' /}
+#{/set}
+#{set 'moreStyles'}
+#{stylesheet 'jquery-ui-1.8.2.custom.css' /}
+#{/set}
+ <div class="row">
+  <div class="label">Value</div>
+  <div class="field">
+      <input type="text" name="entity.value" value="${entity?.value}"/>
+    
+  </div>
+  <span class="error">${errors.forKey('entity.value')}</span>
+</div>
+
+
+ <div class="row">
+  <div class="label">Account</div>
+  <div class="field">
+    
+    
+    
+    
+      
+      
+        <select name="entity.account.id">
+              
+                      <option value="">(None)</option>              
+              
+        %{ models.Account.all().fetch().sort{ it.toString() }.each() { }%
+          
+          %{
+            selected = false;
+            if (entity?.account?.id == it.id) {
+              selected = true
+            }
+          }%
+          <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
+        %{ } }%
+        </select>
+      
+    
+    
+    
+    
+    
+    
+    
+  </div>
+  <span class="error">${errors.forKey('entity.account')}</span>
+</div>
+
+
+ <div class="row">
+  <div class="label">Date</div>
+  <div class="field">
+    
+    
+      <script type="text/javascript">
+        $(function() {
+          $("#date").datepicker({ dateFormat: 'yy-mm-dd' } );
+        });
+      </script>
+      <!-- TODO: date format needs to come from application.conf -->
+      <input id="date" type="text" name="entity.date" 
+        value="${entity?.date?.format('yyyy-MM-dd')}"
+        size="10" />
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </div>
+  <span class="error">${errors.forKey('entity.date')}</span>
+</div>
+
+
+ <div class="row">
+  <div class="label">Mode</div>
+  <div class="field">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <input type="text" name="entity.mode" value="${entity?.mode}"/>
+    
+  </div>
+  <span class="error">${errors.forKey('entity.mode')}</span>
+</div>
+
+
+ <div class="row">
+  <div class="label">Text</div>
+  <div class="field">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <input type="text" name="entity.text" value="${entity?.text}"/>
+    
+  </div>
+  <span class="error">${errors.forKey('entity.text')}</span>
+</div>
+
+
+ <div class="row">
+  <div class="label">Involved</div>
+  <div class="field">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <input type="text" name="entity.involved" value="${entity?.involved}"/>
+    
+  </div>
+  <span class="error">${errors.forKey('entity.involved')}</span>
+</div>
+
+
+ <div class="row">
+  <div class="label">Category</div>
+  <div class="field">
+    
+    
+    
+    
+      
+      
+        <select name="entity.category.id">
+              
+                      <option value="">(None)</option>              
+              
+        %{ models.Category.all().fetch().sort{ it.toString() }.each() { }%
+          
+          %{
+            selected = false;
+            if (entity?.category?.id == it.id) {
+              selected = true
+            }
+          }%
+          <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
+        %{ } }%
+        </select>
+      
+    
+    
+    
+    
+    
+    
+    
+  </div>
+  <span class="error">${errors.forKey('entity.category')}</span>
+</div>
+
+
+ <div class="row">
+  <div class="label"></div>
+  <div class="field">
+    
+    
+    
+    
+    
+    
+    
+    
+      <input type="hidden" name="entity.id" value="${entity?.id}"/>
+    
+    
+    
+  </div>
+  <span class="error">${errors.forKey('entity.id')}</span>
+</div>
+
+

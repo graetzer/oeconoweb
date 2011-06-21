@@ -1,0 +1,153 @@
+#{set 'moreScripts'}
+#{script 'jquery-ui-1.8.2.custom.min.js' /}
+#{/set}
+#{set 'moreStyles'}
+#{stylesheet 'jquery-ui-1.8.2.custom.css' /}
+#{/set}
+
+
+ <div class="row">
+  <div class="label">User</div>
+  <div class="field">
+    
+    
+    
+    
+      
+      
+        <select name="entity.user.id">
+              
+                      <option value="">(None)</option>              
+              
+        %{ models.User.all().fetch().sort{ it.toString() }.each() { }%
+          
+          %{
+            selected = false;
+            if (entity?.user?.id == it.id) {
+              selected = true
+            }
+          }%
+          <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
+        %{ } }%
+        </select>
+      
+    
+    
+    
+    
+    
+    
+    
+  </div>
+  <span class="error">${errors.forKey('entity.user')}</span>
+</div>
+
+
+ <div class="row">
+  <div class="label">Bankname</div>
+  <div class="field">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <input type="text" name="entity.bankname" value="${entity?.bankname}"/>
+    
+  </div>
+  <span class="error">${errors.forKey('entity.bankname')}</span>
+</div>
+
+
+ <div class="row">
+  <div class="label">Number</div>
+  <div class="field">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <input type="text" name="entity.number" value="${entity?.number}"/>
+    
+  </div>
+  <span class="error">${errors.forKey('entity.number')}</span>
+</div>
+
+
+ <div class="row">
+  <div class="label">Start Balance</div>
+  <div class="field">
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      <input type="text" name="entity.startBalance" value="${entity?.startBalance}"/>
+    
+  </div>
+  <span class="error">${errors.forKey('entity.startBalance')}</span>
+</div>
+
+
+ <div class="row">
+  <div class="label">Start Date</div>
+  <div class="field">
+    
+    
+      <script type="text/javascript">
+        $(function() {
+          $("#startDate").datepicker({ dateFormat: 'yy-mm-dd' } );
+        });
+      </script>
+      <!-- TODO: date format needs to come from application.conf -->
+      <input id="startDate" type="text" name="entity.startDate" 
+        value="${entity?.startDate?.format('yyyy-MM-dd')}"
+        size="10" />
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </div>
+  <span class="error">${errors.forKey('entity.startDate')}</span>
+</div>
+
+
+ <div class="row">
+  <div class="label"></div>
+  <div class="field">
+    
+    
+    
+    
+    
+    
+    
+    
+      <input type="hidden" name="entity.id" value="${entity?.id}"/>
+    
+    
+    
+  </div>
+  <span class="error">${errors.forKey('entity.id')}</span>
+</div>
+
+

@@ -1,0 +1,76 @@
+#{extends 'main.html' /}
+
+<h2>View Account</h2>
+
+<div class="entity">
+
+  
+	<div class="row">
+		<span class="elem">
+			user:
+		</span>
+		<span class="value">
+      ${entity.user}
+		</span>
+	</div>
+  
+
+  
+	<div class="row">
+		<span class="elem">
+			bankname:
+		</span>
+		<span class="value">
+      ${entity.bankname}
+		</span>
+	</div>
+  
+
+  
+	<div class="row">
+		<span class="elem">
+			number:
+		</span>
+		<span class="value">
+      ${entity.number}
+		</span>
+	</div>
+  
+
+  
+	<div class="row">
+		<span class="elem">
+			startBalance:
+		</span>
+		<span class="value">
+      ${entity.startBalance}
+		</span>
+	</div>
+  
+
+  
+	<div class="row">
+		<span class="elem">
+			startDate:
+		</span>
+		<span class="value">
+      ${entity.startDate}
+		</span>
+	</div>
+  
+
+  
+	<div class="row">
+		<span class="elem">
+			id:
+		</span>
+		<span class="value">
+      ${entity.id}
+		</span>
+	</div>
+  
+
+</div>
+
+<a href="@{Accounts.index}">Back</a>
+

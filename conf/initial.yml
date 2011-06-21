@@ -1,0 +1,10 @@
+models.User(admin):
+    name:   admin
+    email:  simon@graetzer.org
+    password:    admin
+    
+models.Category(freetime):
+    name:   Freizeit
+    
+models.Category(salary):
+    name:   Gehalt

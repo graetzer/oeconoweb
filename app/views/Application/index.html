@@ -1,0 +1,19 @@
+#{extends 'main.html' /} #{set title:'Main' /} #{set 'moreStyles'}
+#{/set} #{set 'moreScripts'}
+    <script type="text/javascript">
+    /* <![CDATA[ */
+     $(document).ready(function(){
+        
+     });
+    /* ]]> */
+    </script>
+#{/set}
+
+<div>
+<p>Ihre Bankkonten</p>
+<ul>
+#{list items:categories, as:'c'}
+<li>${c.name}  ${c.sumBalance(user)}</li>
+#{/list}
+</ul>
+</div>
