@@ -16,15 +16,16 @@ public class Security extends Secure.Security {
     	return c != null && c.password.equals(password);
     }
     
+    static boolean check(String profile) {
+        User user = User.find("byUserID", connected()).first();
+        return user.role != null && user.role.equalsIgnoreCase(profile);
+      }
+    
     static void onAuthenticated() {
-    	Accounts.index();
+    	Application.index();
     }
     
     static void onDisconnected() {
-    	try {
             Application.index();
-        } catch (Throwable e) {
-            e.printStackTrace();
-        }
     }
 }

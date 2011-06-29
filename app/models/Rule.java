@@ -27,7 +27,6 @@ public class Rule extends Model {
 	@ManyToOne(optional = false)
 	public Category category;
 	
-	@Required
 	@ManyToOne(optional = false)
 	public User user;
 	

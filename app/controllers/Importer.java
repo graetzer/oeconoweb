@@ -16,7 +16,7 @@ import play.mvc.Controller;
 import play.mvc.With;
 
 @With(Secure.class)
-public class Importer extends Controller {
+public class Importer extends BaseController {
 	@Before
 	public static void secure() {
 		renderArgs.put("user", Security.connectedUser());

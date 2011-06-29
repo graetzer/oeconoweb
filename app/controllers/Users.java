@@ -8,7 +8,7 @@ import play.data.validation.Validation;
 import play.data.validation.Valid;
 
 
-public class Users extends Controller {
+public class Users extends BaseController {
 	public static void index() {
 		List<User> entities = models.User.all().fetch();
 		render(entities);

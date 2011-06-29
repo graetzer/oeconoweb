@@ -8,17 +8,6 @@
   <div class="label">Words</div>
   <div class="field">
     
-    
-    
-    
-    
-    	
-    
-    
-    
-    
-    
-    
   </div>
   <span class="error">${errors.forKey('entity.words')}</span>
 </div>
@@ -27,19 +16,10 @@
  <div class="row">
   <div class="label">Weight</div>
   <div class="field">
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-      <input type="text" name="entity.weight" value="${entity?.weight}"/>
-    
-  </div>
+
+		<input type="text" name="entity.weight" value="${entity?.weight}" />
+
+	</div>
   <span class="error">${errors.forKey('entity.weight')}</span>
 </div>
 
@@ -47,16 +27,6 @@
  <div class="row">
   <div class="label">Name</div>
   <div class="field">
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
       <input type="text" name="entity.name" value="${entity?.name}"/>
     
   </div>
@@ -67,12 +37,7 @@
  <div class="row">
   <div class="label">Category</div>
   <div class="field">
-    
-    
-    
-    
-      
-      
+   
         <select name="entity.category.id">
               
                       <option value="">(None)</option>              
@@ -88,53 +53,9 @@
           <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
         %{ } }%
         </select>
-      
-    
-    
-    
-    
-    
-    
-    
+
   </div>
   <span class="error">${errors.forKey('entity.category')}</span>
-</div>
-
-
- <div class="row">
-  <div class="label">User</div>
-  <div class="field">
-    
-    
-    
-    
-      
-      
-        <select name="entity.user.id">
-              
-                      <option value="">(None)</option>              
-              
-        %{ models.User.all().fetch().sort{ it.toString() }.each() { }%
-          
-          %{
-            selected = false;
-            if (entity?.user?.id == it.id) {
-              selected = true
-            }
-          }%
-          <option value="${it?.id}" ${selected ? 'selected'.raw() : ''}>${it}</option>
-        %{ } }%
-        </select>
-      
-    
-    
-    
-    
-    
-    
-    
-  </div>
-  <span class="error">${errors.forKey('entity.user')}</span>
 </div>
 
 

@@ -10,11 +10,15 @@ import play.db.jpa.Model;
 public class User extends Model {
 	@Required
 	public String name;
+	
 	@Required
 	@Email
 	public String email;
+	
 	@Required
 	public String password;
+	
+	public String role = "user";
 	
 	@Override
 	public String toString() {

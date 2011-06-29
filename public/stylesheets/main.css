@@ -77,23 +77,6 @@ footer {
     margin-bottom: 10px;
 }
 
-.tablecontainer {position: relative;}
-.dataTables_wrapper{top:40px;}
-
-.tablecontainer #addButton a{
-    margin: 0; position : absolute;
-    top: 0;
-    right: 0;
-    background: #54BD06;
-    padding: 3px 10px;
-    font-size: 90%;
-    -moz-border-radius: 8px;
-    -webkit-border-radius: 8px;
-    color: #fff !important;
-    text-decoration: none;
-    position: absolute;
-}
-
 #content form .inputField {
     margin: 10px 0;
     height: 60px;
@@ -118,12 +101,6 @@ form .inputField .description{
     position: absolute;
     top: 0;
     left: 0;
-}
-
-table.display {
-    background-color: #EBEBEB;
-    margin-bottom: 10px;
-    padding: 5px;
 }
 
 /*

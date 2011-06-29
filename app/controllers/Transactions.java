@@ -8,7 +8,7 @@ import play.data.validation.Validation;
 import play.data.validation.Valid;
 
 
-public class Transactions extends Controller {
+public class Transactions extends BaseController {
 	public static void index() {
 		List<Transaction> entities = models.Transaction.all().fetch();
 		render(entities);

@@ -33,7 +33,6 @@ public class CSVDecoder extends DecoderImpl {
 		super(source);
 	}
 
-	@Override
 	public List<Transaction> decode() {
 		List<Transaction> transactions = new ArrayList<Transaction>();
 		CsvListReader reader = new CsvListReader(source, CsvPreference.EXCEL_NORTH_EUROPE_PREFERENCE);

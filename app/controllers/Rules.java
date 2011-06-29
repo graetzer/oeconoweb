@@ -8,7 +8,7 @@ import play.data.validation.Validation;
 import play.data.validation.Valid;
 
 
-public class Rules extends Controller {
+public class Rules extends BaseController {
 	public static void index() {
 		List<Rule> entities = models.Rule.all().fetch();
 		render(entities);
@@ -39,7 +39,12 @@ public class Rules extends Controller {
 			flash.error(Messages.get("scaffold.validation"));
 			render("@create", entity);
 		}
-    entity.save();
+		
+		if (entity.user == null)
+			entity.user = Security.connectedUser();
+		
+		
+		entity.save();
 		flash.success(Messages.get("scaffold.created", "Rule"));
 		index();
 	}

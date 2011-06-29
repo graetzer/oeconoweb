@@ -8,7 +8,7 @@ import play.data.validation.Validation;
 import play.data.validation.Valid;
 
 
-public class Categories extends Controller {
+public class Categories extends BaseController {
 	public static void index() {
 		List<Category> entities = models.Category.all().fetch();
 		render(entities);
