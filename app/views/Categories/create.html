@@ -3,10 +3,10 @@
 <h2>Create Category</h2>
 
 <div class="entity">
-#{form @Categorys.save(), id:'createForm'}
-	#{include 'Categorys/_form.html' /}
+#{form @Categories.save(), id:'createForm'}
+	#{include 'Categories/_form.html' /}
 	<input type="submit" name="submit" value="Save" />
 #{/form}
 </div>
 
-<a href="@{Categorys.index}">Cancel</a>
+<a href="@{Categories.index}">Cancel</a>

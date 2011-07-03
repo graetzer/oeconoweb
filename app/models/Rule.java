@@ -1,7 +1,7 @@
 package models;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
@@ -15,10 +15,10 @@ import play.db.jpa.Model;
 public class Rule extends Model {
 	@ElementCollection
 	@Column(name = "word")
-	public Set<String> words = new HashSet<String>();
+	public List<String> words = new ArrayList<String>();
 
 	@Required
-	public int weight;
+	public int weight = 100;
 	
 	@Required
 	public String name;

@@ -17,7 +17,7 @@ public class Security extends Secure.Security {
     }
     
     static boolean check(String profile) {
-        User user = User.find("byUserID", connected()).first();
+        User user = User.find("byName", connected()).first();
         return user.role != null && user.role.equalsIgnoreCase(profile);
       }
     

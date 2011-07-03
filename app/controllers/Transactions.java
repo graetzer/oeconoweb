@@ -1,7 +1,10 @@
 package controllers;
 
 import java.util.List;
+
+import models.Rule;
 import models.Transaction;
+import models.matcher.Matcher;
 import play.mvc.Controller;
 import play.i18n.Messages;
 import play.data.validation.Validation;
@@ -57,4 +60,14 @@ public class Transactions extends BaseController {
 		index();
 	}
 
+	public static void rematch() {
+		List<Transaction> transactions = Transaction.findAll();
+		List<Rule> rules = Rule.find("byUser", Security.connectedUser()).fetch();
+		if (rules != null && rules.size() > 0) {
+		    Matcher m = new Matcher(rules);
+		    m.match(transactions);
+		}
+		
+		Transactions.show(transactions.get(0).id);
+	}
 }

@@ -1,3 +1,35 @@
 # You can specialize this file for each language.
 # For example, for French create a messages.fr file
 #
+title = Titel
+name = Name
+email = Email
+password = Passwort
+value = Wert
+date = Datum
+mode = Transaktionsart
+text = Beschreibung
+involved = Betroffener
+category = Kategorie
+freetime = Freizeit
+word_count = Anzahl der Worte
+weight = Gewicht
+bankname = Bank
+number = Kontonummer
+balance = Kontostand
+bankmode = Transaktionsart
+add = Neue
+rule = Regel
+words = Worte
+comma_seperated = mit , seperiert
+finish = Fertig
+send = Absenden
+Transactions = Transaktionen
+Home = Home
+Accounts = Kontos
+Rules = Regeln
+Categories = Kategorien
+Import = Importieren
+Users = Nutzer
+login = Anmelden
+logout = Abmelden

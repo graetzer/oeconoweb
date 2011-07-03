@@ -35,15 +35,16 @@ public class Matcher {
 				points += r.match(t.mode);
 				points += r.match(t.involved);
 
-				if (points > maxPoints)
+				if (points > maxPoints) {
 					maxId = i; maxPoints = points;
+				}
 			}
 			
 			//Save the result
-			if (MIN_TRESHOLD < maxPoints)
+			if (MIN_TRESHOLD < maxPoints) {
 			    t.category = rules.get(maxId).category;
-			
-			t.save();
+			    t.save();
+			}
 		}
 	}
 

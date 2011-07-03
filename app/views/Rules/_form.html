@@ -1,28 +1,28 @@
 #{set 'moreScripts'}
 #{script 'jquery-ui-1.8.2.custom.min.js' /}
+#{script 'jquery.addRow.js' /}
+<script type="text/javascript">
+	$(document).ready(function(){
+		var remove = function() {
+			$(this).parent().remove();
+		};
+		
+		$("#add_button").click(function() {
+			var template = '<div id="entity.words[_i_]"><input type="text" name="entity.words[_i_]" value=""/></div>';
+			var list = $("#expandableList");
+			$( template.replace(/_i_/g, list.children().length) ).append(
+				$('<a href="#">Delete</a>').click(remove)      ).appendTo(list);
+		});
+		
+		$("#expandableList div").append(
+			$('<a href="#">Delete</a>').click(remove)
+		);
+	 });
+</script>
 #{/set}
 #{set 'moreStyles'}
 #{stylesheet 'jquery-ui-1.8.2.custom.css' /}
 #{/set}
- <div class="row">
-  <div class="label">Words</div>
-  <div class="field">
-    
-  </div>
-  <span class="error">${errors.forKey('entity.words')}</span>
-</div>
-
-
- <div class="row">
-  <div class="label">Weight</div>
-  <div class="field">
-
-		<input type="text" name="entity.weight" value="${entity?.weight}" />
-
-	</div>
-  <span class="error">${errors.forKey('entity.weight')}</span>
-</div>
-
 
  <div class="row">
   <div class="label">Name</div>
@@ -33,6 +33,15 @@
   <span class="error">${errors.forKey('entity.name')}</span>
 </div>
 
+<div class="row">
+  <div class="label">Weight</div>
+  <div class="field">
+
+		<input type="text" name="entity.weight" value="${entity?.weight}" />
+
+	</div>
+  <span class="error">${errors.forKey('entity.weight')}</span>
+</div>
 
  <div class="row">
   <div class="label">Category</div>
@@ -58,17 +67,22 @@
   <span class="error">${errors.forKey('entity.category')}</span>
 </div>
 
+ <div class="row">
+  <div class="label">Words</div>
+  <div class="field">
+  	<div class="list" id="expandableList">
+  		%{ for(int i = 0; i < entity?.words.size(); i++){ }%
+    	<div id="entity.words[${i}]"><input type="text" name="entity.words[${i}]" value="${entity?.words[i]}"/></div>
+    	%{ } }%
+    </div>
+    <input type="button" value="&{'add_word'}" id="add_button"/> 
+  </div>
+  <span class="error">${errors.forKey('entity.words')}</span>
+</div>
 
  <div class="row">
   <div class="label"></div>
   <div class="field">
-    
-    
-    
-    
-    
-    
-    
     
       <input type="hidden" name="entity.id" value="${entity?.id}"/>
     

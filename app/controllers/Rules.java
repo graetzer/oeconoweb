@@ -43,7 +43,6 @@ public class Rules extends BaseController {
 		if (entity.user == null)
 			entity.user = Security.connectedUser();
 		
-		
 		entity.save();
 		flash.success(Messages.get("scaffold.created", "Rule"));
 		index();
@@ -54,9 +53,7 @@ public class Rules extends BaseController {
 			flash.error(Messages.get("scaffold.validation"));
 			render("@edit", entity);
 		}
-		
-      		entity = entity.merge();
-		
+		entity = entity.merge();
 		entity.save();
 		flash.success(Messages.get("scaffold.updated", "Rule"));
 		index();

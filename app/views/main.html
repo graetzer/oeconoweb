@@ -1,58 +1,90 @@
 <!doctype html>
-
-<!--[if lt IE 7 ]> <html lang="en" class="no-js ie6"> <![endif]-->
-<!--[if IE 7 ]>    <html lang="en" class="no-js ie7"> <![endif]-->
-<!--[if IE 8 ]>    <html lang="en" class="no-js ie8"> <![endif]-->
-<!--[if IE 9 ]>    <html lang="en" class="no-js ie9"> <![endif]-->
-<!--[if (gt IE 9)|!(IE)]><!-->
-<html lang="en" class="no-js">
-<!--<![endif]-->
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="description"
-	content="Ein Service der es ihnen ermöglicht Bücher, CDs und vieles mehr einzuscannen und anschließend zu verkaufen">
+	content="&{'service_description'}">
 <meta name="author" content="Simon Grätzer">
+<title>Oeconoweb #{get 'title' /}</title>
 <!-- Place favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
 <link rel="shortcut icon" href="@{'/public/favicon.ico'}">
 <link rel="apple-touch-icon" href="@{'/public/apple-touch-icon.png'}">
-#{stylesheet 'main.css' /}
+<!--[if lte IE 7]>
+#{stylesheet 'patches/patch_layout.css' /}
+<![endif]-->
+#{stylesheet 'layout.css' /}
 #{get 'moreStyles' /}
 
-<!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
 #{script 'jquery-1.6.min.js' /}
-*{#{script 'script.js' /}}*
 #{get 'moreScripts' /}
 
 </head>
 <body>
-	<div id="main">
-		<header>Banking@Home</header>
-
-		<nav>
-			<ul>
+	<div class="page_margins">
+    <div id="border-top">
+      <div id="edge-tl"></div>
+      <div id="edge-tr"></div>
+    </div>
+    <div class="page">
+      <div id="header">
+      	<h1>Oeconoweb</h1>
+      
+        <div id="topnav">
+          <!-- start: skip link navigation -->
+          <a class="skip" title="skip link" href="#navigation">Skip to the navigation</a><span class="hideme">.</span>
+          <a class="skip" title="skip link" href="#content">Skip to the content</a><span class="hideme">.</span>
+          <!-- end: skip link navigation -->
+          #{if user}
+          	#{a @Secure.logout()}&{'logout'}#{/a}
+          #{/if}
+          #{else}
+          	#{a @Secure.login()}&{'login'}#{/a}
+          #{/else} | <a href="#">Imprint</a>
+        </div>
+      </div>
+      <div id="nav">
+        <!-- skiplink anchor: navigation -->
+        <a id="navigation" name="navigation"></a>
+        <div class="hlist">
+          <!-- main navigation: horizontal list -->
+          <nav>
+          <ul>
+            <li>#{a @Application.index()}&{'Home'}#{/a}</li>
 				#{if user}
 				<li>#{a @Accounts.index() }&{'Accounts'}#{/a}</li>
 				<li>#{a @Transactions.index() }&{'Transactions'}#{/a}</li>
 				<li>#{a @Rules.index() }&{'Rules'}#{/a}</li>
 				<li>#{a @Categories.index() }&{'Categories'}#{/a}</li>
                 <li>#{a @Importer.index() }&{'Import'}#{/a}</li>
-                
-				#{if user?.name == "admin"}
+				#{check "admin"}
 				<li>#{a @Users.index() }&{'Users'}#{/a}</li>
+				#{/check}
 				#{/if}
-				#{/if}
-				#{else}
-				<li>#{a @Application.index()}Home#{/a}
-				#{/else}
-			</ul>
-		</nav>
-
-		<div id="content">#{doLayout /}</div>
-
-		<footer>
-			Copyright 2011 <a href="http://formalcode.com">Simon Grätzer</a>
-		</footer>
-	</div>
-	<!--! end of #container -->
+          </ul>
+          </nav>
+        </div>
+      </div>
+      <div id="main">
+        <div id="col1">
+          <div id="col1_content" class="clearfix">
+            <!-- add your content here -->
+          </div>
+        </div>
+        <div id="col3">
+          <div id="col3_content" class="clearfix">
+            #{doLayout /}
+          </div>
+          <!-- IE Column Clearing -->
+          <div id="ie_clearing"> &#160; </div>
+        </div>
+      </div>
+      <!-- begin: #footer -->
+      <footer><div id="footer">Copyright 2011 <a href="http://graetzer.org">Simon Grätzer</a></div></footer>
+    </div>
+    <div id="border-bottom">
+      <div id="edge-bl"></div>
+      <div id="edge-br"></div>
+    </div>
+  </div>
 </body>
 </html>
