@@ -1,57 +1,45 @@
-#{extends 'main.html' /} #{set 'moreStyles'} #{stylesheet 'table.css' /}
+#{extends 'main.html' /} 
+#{set 'moreScripts'}
+*{#{script 'jquery.dataTables.min.js' /}}*
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#accounts td[class!='actions']").click(function () {
+		var showTransactions = #{jsAction @Accounts.trasactions(':id') /}
+		var showID = $(this).parent().attr("id");
+		window.location.href = showTransactions({id : showID});
+	});
+});
+</script>
+#{/set}
+#{set 'moreStyles'} #{stylesheet 'table.css' /}
 #{/set}
 
 <h2>Accounts</h2>
 
-<table class="display entity Account">
+<table id="accounts" class="display entity">
     <thead>
         <tr>
             <th>
                 <!-- actions -->
             </th>
-
-
-            <th>User</th>
-            <th>Bankname</th>
-            <th>Number</th>
-            <th>Start Balance</th>
+            <th>&{'bankname'}</th>
+            <th>&{'number'}</th>
+            <th>&{'balance'}</th>
             <th>Start Date</th>
-            <th>Id</th>
         </tr>
     </thead>
     <tbody>
         #{list items:entities, as:'entity'}
-        <tr>
-            <td><a href="@{Accounts.show(entity.id)}">Show</a>&nbsp;
-                <a href="@{Accounts.edit(entity.id)}">Edit</a>&nbsp; <a
-                href="@{Accounts.delete(entity.id)}"
+        <tr id="${entity.id}">
+            <td class="actions"><a href="@{Accounts.show(entity.id)}">Show</a>&nbsp;
+                <a href="@{Accounts.edit(entity.id)}">Edit</a>&nbsp; 
+                <a href="@{Accounts.delete(entity.id)}"
                 onclick="if (!confirm('Are you sure you want to delete this record?')) return false;">Delete</a>
             </td>
-
-
-            <td>${entity.user}</td>
-
-
-
             <td>${entity.bankname}</td>
-
-
-
             <td>${entity.number}</td>
-
-
-
-            <td>${entity.startBalance}</td>
-
-
-
+            <td>${entity.actualBalance()}</td>
             <td>${entity.startDate}</td>
-
-
-
-            <td>${entity.id}</td>
-
-
         </tr>
         #{/list}
     </tbody>

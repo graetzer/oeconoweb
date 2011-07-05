@@ -30,8 +30,8 @@ public class Account extends Model {
 	@Required
 	public Date startDate;
 	
-	@OneToMany(cascade = CascadeType.REMOVE)
-	Set<Transaction> transactions;
+	@OneToMany(cascade = CascadeType.REMOVE, mappedBy="account")
+	public List<Transaction> transactions;
 	
 	@Override
 	public String toString() {

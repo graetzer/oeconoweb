@@ -42,7 +42,8 @@ public class Transactions extends BaseController {
 			flash.error(Messages.get("scaffold.validation"));
 			render("@create", entity);
 		}
-    entity.save();
+		
+		entity.save();
 		flash.success(Messages.get("scaffold.created", "Transaction"));
 		index();
 	}

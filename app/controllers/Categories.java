@@ -39,7 +39,7 @@ public class Categories extends BaseController {
 			flash.error(Messages.get("scaffold.validation"));
 			render("@create", entity);
 		}
-    entity.save();
+		entity.save();
 		flash.success(Messages.get("scaffold.created", "Category"));
 		index();
 	}
@@ -49,9 +49,7 @@ public class Categories extends BaseController {
 			flash.error(Messages.get("scaffold.validation"));
 			render("@edit", entity);
 		}
-		
-      		entity = entity.merge();
-		
+		entity = entity.merge();
 		entity.save();
 		flash.success(Messages.get("scaffold.updated", "Category"));
 		index();

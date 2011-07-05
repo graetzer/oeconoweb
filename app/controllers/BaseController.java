@@ -7,7 +7,8 @@ public abstract class BaseController extends Controller {
 	
     @Before
     public static void secure() {
-        renderArgs.put("user", Security.connectedUser());
+    	// Add user to renderArgs
+        Security.connectedUser();
     }
 
 }

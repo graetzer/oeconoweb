@@ -5,10 +5,13 @@ import models.*;
 public class Security extends Secure.Security {
 	
 	public static User connectedUser () {
-		if (isConnected())
-			return User.find("byName", connected()).first();
+		User user = (User) renderArgs.get("user");
+		if (isConnected() && user == null) {
+			user = User.find("byName", connected()).first();
+			renderArgs.put("user", user);
+		}
 		
-		return null;
+		return user;
 	}
 	
     static boolean authenticate(String username, String password) {

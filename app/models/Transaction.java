@@ -2,10 +2,13 @@ package models;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.FetchMode;
 
 import play.data.validation.Required;
 import play.db.jpa.Model;
@@ -16,7 +19,7 @@ public class Transaction extends Model {
 	public double value;
 
 	@Required
-	@ManyToOne(fetch = FetchType.LAZY, optional = false)
+	@ManyToOne(optional = false)
 	public Account account;
 
 	@Required
